@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
-import {
-  YOUTUBE_SEARCH_SUGGESTIONS,
-  YOUTUBE_SEARCH_SUGGESTIONS_API,
-  YOUTUBE_SEARCH_SUGGESTIONS_KEY,
-} from "../utils/constants";
+import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/constants";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     // API Call
@@ -29,6 +27,7 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
     const json = await data.json();
     // console.log(json[1]);
+    setSuggestions(json[1]);
   };
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
@@ -58,21 +57,28 @@ const Header = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => {
+              setShowSuggestions(true);
+            }}
+            onBlur={() => {
+              setShowSuggestions(false);
+            }}
           />
           <button className="border border-gray-400  bg-gray-100 py-2 px-5 rounded-r-full">
             🔍
           </button>
         </div>
-        <div className="fixed bg-white w-[35%] shadow-lg rounded-lg border border-gray-100">
-          <ul className="">
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-            <li className="py-2 px-3 shadow-sm hover:bg-gray-200">🔍 Iphone</li>
-          </ul>
-        </div>
+        {showSuggestions && (
+          <div className="absolute bg-white w-[35%] shadow-lg rounded-lg border border-gray-100">
+            <ul>
+              {suggestions.map((s) => (
+                <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-200">
+                  🔍 {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       <div className="col-span-1">
         <img
@@ -80,7 +86,7 @@ const Header = () => {
           alt="user"
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
         />
-      </div>{" "}
+      </div>
     </div>
   );
 };
