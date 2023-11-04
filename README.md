@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+useeffect dispatch & usesearchparams also api calling
+creating auth api & enabling fetching
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+.env should restart
 
-## Available Scripts
+Why do we need suggestions?
+For a beter User Experience.
 
-In the project directory, you can run:
+How to check on flipkart?
 
-### `npm start`
+Network => filter fetch/XHR => Search for query => check in dev tools by searchquery
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Debouncing:
+typing slow = 200ms typing fast = 30ms
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Perfomance:
 
-### `npm test`
+iphone pro max = 14 letter _ 1000 Users = 140000
+with debouncing= 3 API calls _ 1000 Users = 3000
+Debouncing with 200ms
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+if difference between 2 key strokes is <200ms - DECLINE API call
+200ms make an API call
 
-### `npm run build`
+Cache: time complexity tro search in array = O(n) time complexity tro search in Object = O(1)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[i, ip, iph, iphone]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+{ i: ip: iph: iphone: }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+new Map();
 
-### `npm run eject`
+Advantages
+Better UX.
+Performance optimization as you were making less api calls for the same result.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!--
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+key - i pressed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-( because of usestate ) render the component
+- useEffect()
+- start timer => make API Call after 200 ms
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+key ip - p is pressed before 200 ms
+- Unmounting - Destroys the component(useeffect return method triggered)
+-( because of usestate ) re-render the component
+- useEffect()
+- start new timer => make API Call after 200 ms
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+key iph - h is pressed after 200 ms
+- Destroys the component(useeffect return method triggered but timers is aldredy expired.)
+-( because of usestate ) re-render the component
+- useEffect()
+- start new timer => make API Call after 200 ms
+ -->

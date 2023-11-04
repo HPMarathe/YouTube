@@ -16,10 +16,11 @@ const WatchPage = () => {
     dispatch(closeMenu());
   }, []);
   return (
-    <div className="px-5 ">
+    <div className="px-5  ">
       <iframe
-        width="1200"
-        height="700"
+        className="rounded-lg"
+        width="1100"
+        height="600"
         src={"https://www.youtube.com/embed/" + searchParams.get("v")}
         title="YouTube video player"
         frameBorder="0"
