@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/constants";
+import store from "../utils/store";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     // API Call
     // console.log(searchQuery);
     // make api call after very key press but if the difference b/w 2API Calls is <200ms =>Decline the call
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+      // check if searchQuery results are presented in cache else call api & store results in cache.
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
     }, 300);
 
     return () => {
@@ -23,13 +33,20 @@ const Header = () => {
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
-    console.log(searchQuery);
+    // console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
     const json = await data.json();
     // console.log(json[1]);
     setSuggestions(json[1]);
+
+    //update the cache
+    // storing cache as object in key value pair
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };

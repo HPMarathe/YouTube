@@ -54,3 +54,24 @@ key iph - h is pressed after 200 ms
 - useEffect()
 - start new timer => make API Call after 200 ms
  -->
+
+# Improving search sugggestions functionality
+
+- Decreasing api calls by caching the results in redux store
+- because of this whenever we are pressing back it will not make api call again as it will fetch those results from cache.
+
+# DSA in storing cache
+
+- Time compexity for search in array= [i,ip,iph,ipho] = 0(n)
+- Time compexity for search in object/map = 0(1)
+  {
+  i:
+  ip:
+  iph:
+  }
+
+# LRU Cache
+
+- To not bloat your store you can remove LEAST Recently used from store after a particular search count
+
+# N level nested comments
