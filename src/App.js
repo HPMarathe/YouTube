@@ -6,11 +6,24 @@ import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
+import SearchResults from "./components/SearchResults";
+
+// error - useNavigate() may be used only in the context of a <Router> component.
+// for handling this error we need to put heaader into our approuter & hence we created Layout
+
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      <Body />
+    </>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body />,
+    element: <Layout />,
     children: [
       {
         path: "/",
@@ -20,6 +33,10 @@ const appRouter = createBrowserRouter([
         path: "/watch",
         element: <WatchPage />,
       },
+      {
+        path: "/results",
+        element: <SearchResults />,
+      },
     ],
   },
 ]);
@@ -28,7 +45,6 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Header />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>
