@@ -19,14 +19,17 @@ const SearchResults = () => {
     const json = await data.json();
     // console.log(json);
     setSearchVideos(json?.items);
-    // console.log(json.items[0]);
+    console.log(json.items[0]);
   };
 
   return (
     <div className="justify-center">
       <div className="py-2 ">
         {searchVideos?.map((video) => (
-          <Link key={video?.id?.videoId} to={"/watch?v=" + video?.id?.videoId}>
+          <Link
+            key={video?.id?.videoId}
+            to={"/watch?v=" + (video?.id?.videoId || video?.id?.playlistId)}
+          >
             <SearchVideoCard video={video} />
           </Link>
         ))}

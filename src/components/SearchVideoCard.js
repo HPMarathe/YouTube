@@ -23,8 +23,8 @@ const SearchVideoCard = ({ video }) => {
     channelDetails?.items[0].snippet?.thumbnails?.high?.url || {};
 
   return (
-    <div className=" flex  py-4 justify-center pl-28">
-      <div className="w-11/12 h-56 flex  ">
+    <div className=" flex  py-4 justify-center pl-28 ">
+      <div className="w-11/12 h-56 flex overflow-y-hidden ">
         <img
           className="h-full rounded-lg "
           src={video?.snippet?.thumbnails?.medium?.url}

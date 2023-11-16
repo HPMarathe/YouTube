@@ -14,3 +14,11 @@ export const CHANNEL_DATA_API =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   process.env.REACT_APP_GOOGLE_API_KEY +
   "&id=";
+
+// change this count according to the browser
+export const LIVE_CHAT_COUNT = 10;
+
+export const VIDEO_DETAILS_API =
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" +
+  process.env.REACT_APP_GOOGLE_API_KEY +
+  "&id=";
