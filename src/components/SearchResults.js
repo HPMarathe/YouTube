@@ -8,7 +8,7 @@ const SearchResults = () => {
   const [searchVideos, setSearchVideos] = useState([]);
 
   let searchQuery = searchParams.get("search_query");
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   useEffect(() => {
     getSearchResultVideoList();
@@ -19,7 +19,7 @@ const SearchResults = () => {
     const json = await data.json();
     // console.log(json);
     setSearchVideos(json?.items);
-    console.log(json.items[0]);
+    // console.log(json.items[0]);
   };
 
   return (

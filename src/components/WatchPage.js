@@ -24,25 +24,22 @@ const WatchPage = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="px-5 flex ">
-        <div>
+      <div className="px-5 flex w-full ">
+        <div className="w-8/12">
           <iframe
-            className="rounded-lg"
-            width="1100"
-            height="600"
+            className="rounded-lg aspect-video w-full"
             src={"https://www.youtube.com/embed/" + VideoId}
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
+          <WatchPageVideoDetails videoId={VideoId} />
+          <CommentsContainer />
         </div>
-        <div className="w-full">
+        <div className="w-4/12">
           <LiveChat />
         </div>
       </div>
-      <WatchPageVideoDetails videoId={VideoId} />
-      <CommentsContainer />
     </div>
   );
 };
