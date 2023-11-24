@@ -5,12 +5,16 @@ import { BiDislike } from "react-icons/bi";
 import { PiShareFatThin } from "react-icons/pi";
 import { FiMoreHorizontal } from "react-icons/fi";
 import ChannelDetails from "./ChannelDetails";
+import { useDispatch } from "react-redux";
+import { clearChannelId, setChannnelId } from "../utils/videoSlice";
 
 const WatchPageVideoDetails = ({ videoId }) => {
-  const [videoDetails, setVideoDetails] = useState([null]);
+  const dispatch = useDispatch();
+  const [videoDetails, setVideoDetails] = useState(null);
 
   useEffect(() => {
     fetchVideoDetails();
+    return () => dispatch(clearChannelId());
   }, [videoId]);
 
   const fetchVideoDetails = async () => {
@@ -20,12 +24,15 @@ const WatchPageVideoDetails = ({ videoId }) => {
     setVideoDetails(json?.items[0]);
   };
 
-  if (videoDetails?.snippet == null) return;
-
   const { channelId, title, channelTitle, description, publishedAt } =
     videoDetails?.snippet || {};
 
+  // console.log(channelId);
+  dispatch(setChannnelId(channelId));
+
   const { commentCount, likeCount, viewCount } = videoDetails?.statistics || {};
+
+  if (videoDetails == null) return;
 
   return (
     <div className="flex flex-col w-full">

@@ -22,3 +22,8 @@ export const VIDEO_DETAILS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   process.env.REACT_APP_GOOGLE_API_KEY +
   "&id=";
+
+export const RECOMMENDATION_VIDEOS_API =
+  "https://youtube.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=25&key=" +
+  process.env.REACT_APP_GOOGLE_API_KEY +
+  "&channelId=";
