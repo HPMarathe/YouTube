@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CommentsList from "./CommentsList";
+import { VIDEO_COMMENTS_API } from "../utils/constants";
 
 const commentsData = [
   {
@@ -74,7 +75,16 @@ const commentsData = [
   },
 ];
 
-const CommentsContainer = () => {
+const CommentsContainer = ({ videoId }) => {
+  useEffect(() => {
+    fetchComments();
+  }, [videoId]);
+
+  const fetchComments = async () => {
+    const data = await fetch(VIDEO_COMMENTS_API + videoId);
+    const json = await data.json();
+    console.log(json);
+  };
   return (
     <div className="m-5 p-2">
       <h1 className="text-2xl font-bold">Comments:</h1>

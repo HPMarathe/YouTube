@@ -7,6 +7,8 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import ChannelDetails from "./ChannelDetails";
 import { useDispatch } from "react-redux";
 import { clearChannelId, setChannnelId } from "../utils/videoSlice";
+import { ViewsConverter } from "../utils/helper";
+import TimeConverter from "./TimeConverter";
 
 const WatchPageVideoDetails = ({ videoId }) => {
   const dispatch = useDispatch();
@@ -47,7 +49,9 @@ const WatchPageVideoDetails = ({ videoId }) => {
             <BiLike className="text-3xl" />
             <div className="text-xl">|</div>
 
-            <p className="text-md ml-2">{likeCount}</p>
+            <div className="text-md ml-2">
+              <ViewsConverter views={likeCount} />
+            </div>
           </div>
 
           <div className="bg-slate-200 rounded-3xl  px-4 py-2  mx-2">
@@ -61,11 +65,14 @@ const WatchPageVideoDetails = ({ videoId }) => {
           </div>
         </div>
       </div>
-      <div className="flex p-4">
-        <p className="px-2">{viewCount} Views</p>
-        <p>{publishedAt}</p>
+      <div className="flex p-4 bg-slate-50 w-full">
+        <div className="flex px-2">
+          <ViewsConverter views={viewCount} />
+          <p className="pl-1">views</p>
+        </div>
+        <TimeConverter utcTimestamp={publishedAt} />
       </div>
-      <div className="bg-slate-50 px-4">{description}</div>
+      <div className="bg-slate-50 px-4 line-clamp-2">{description}</div>
     </div>
   );
 };

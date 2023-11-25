@@ -27,3 +27,8 @@ export const RECOMMENDATION_VIDEOS_API =
   "https://youtube.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=25&key=" +
   process.env.REACT_APP_GOOGLE_API_KEY +
   "&channelId=";
+
+export const VIDEO_COMMENTS_API =
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key=" +
+  process.env.REACT_APP_GOOGLE_API_KEY +
+  "&videoId=";

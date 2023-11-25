@@ -27,7 +27,7 @@ const SearchResults = () => {
       <div className="py-2 ">
         {searchVideos?.map((video) => (
           <Link
-            key={video?.id?.videoId}
+            key={video?.id?.videoId || video?.id?.playlistId}
             to={"/watch?v=" + (video?.id?.videoId || video?.id?.playlistId)}
           >
             <SearchVideoCard video={video} />

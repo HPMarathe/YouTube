@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CHANNEL_DATA_API } from "../utils/constants";
+import TimeConverter from "./TimeConverter";
 
 const SearchVideoCard = ({ video }) => {
   // console.log(video);
@@ -32,7 +33,10 @@ const SearchVideoCard = ({ video }) => {
         />
         <div className="pl-4">
           <h1 className="font-semibold text-xl">{video?.snippet?.title}</h1>
-          <div className="">1 year ago</div>
+          <div className="">
+            {" "}
+            <TimeConverter utcTimestamp={video?.snippet?.publishedAt} />
+          </div>
           <div className="flex my-1">
             <img
               className="w-8 my-2 rounded-full "

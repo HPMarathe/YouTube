@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CHANNEL_DATA_API } from "../utils/constants";
+import { ViewsConverter } from "../utils/helper";
+import TimeConverter from "./TimeConverter";
 
 const VideoCard = ({ info }) => {
   // console.log(info);
 
   const { snippet, statistics } = info;
 
-  const { channelId, channelTitle, title, thumbnails } = snippet;
+  const { channelId, channelTitle, title, thumbnails, publishedAt } = snippet;
 
   const [channelDetails, setChannelDetails] = useState(null);
 
@@ -41,7 +43,15 @@ const VideoCard = ({ info }) => {
         <div className="w-full">
           <div className="font-bold my-2 line-clamp-2">{title}</div>
           <div className="line-clamp-1">{channelTitle}</div>
-          <div>{statistics.viewCount} Views</div>
+          <div className="flex">
+            <div className="pr-2 flex">
+              <ViewsConverter views={statistics.viewCount} />
+              <p className="pl-1">views</p>
+            </div>
+            <div>
+              <TimeConverter utcTimestamp={publishedAt} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
