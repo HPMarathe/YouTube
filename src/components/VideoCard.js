@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CHANNEL_DATA_API } from "../utils/constants";
 import { ViewsConverter } from "../utils/helper";
 import TimeConverter from "./TimeConverter";
+import ShimmerVideo from "./ShimmerVideo";
 
 const VideoCard = ({ info }) => {
   // console.log(info);
@@ -25,6 +26,8 @@ const VideoCard = ({ info }) => {
   };
 
   if (channelDetails == null) return;
+
+  // if (channelDetails == null) return <ShimmerVideo />;
 
   const channelLogoImg =
     channelDetails?.items[0].snippet?.thumbnails?.default?.url || {};

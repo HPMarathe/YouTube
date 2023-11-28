@@ -24,11 +24,11 @@ export const VIDEO_DETAILS_API =
   "&id=";
 
 export const RECOMMENDATION_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=25&key=" +
+  "https://youtube.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=50&key=" +
   process.env.REACT_APP_GOOGLE_API_KEY +
   "&channelId=";
 
 export const VIDEO_COMMENTS_API =
-  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key=" +
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&&key=" +
   process.env.REACT_APP_GOOGLE_API_KEY +
   "&videoId=";

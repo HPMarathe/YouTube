@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RECOMMENDATION_VIDEOS_API } from "../utils/constants";
 import RecommendationVideoCard from "./RecommendationVideoCard";
+import RecVideoShimmer from "./RecVideoShimmer";
 
 const RecommendationVideos = () => {
   const channelId = useSelector((store) => store.video.channelId);
-  const [recommendationVideos, setRecommendationVideos] = useState([]);
+  const [recommendationVideos, setRecommendationVideos] = useState(null);
 
   // console.log(channelId);
 
@@ -22,7 +23,7 @@ const RecommendationVideos = () => {
     }
   }, [channelId]);
 
-  if (recommendationVideos == null) return;
+  if (recommendationVideos == null) return <RecVideoShimmer />;
 
   // console.log(recommendationVideos);
   return (

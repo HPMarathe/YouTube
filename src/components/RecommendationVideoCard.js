@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TimeConverter from "./TimeConverter";
+import RecVideoShimmer from "./RecVideoShimmer";
 
 const RecommendationVideoCard = ({ recommendationVideo }) => {
-  if (recommendationVideo == null) return;
+  if (recommendationVideo == null) return <RecVideoShimmer />;
   //   console.log(recommendationVideo);
 
   // if we dont give || {} we will have following error - RecommendationVideos.js:31 Uncaught TypeError: Cannot destructure property 'channelTitle' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined.

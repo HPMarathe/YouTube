@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CommentsList from "./CommentsList";
 import { VIDEO_COMMENTS_API } from "../utils/constants";
+import Comment from "./Comment";
 
 const commentsData = [
   {
@@ -76,21 +77,40 @@ const commentsData = [
 ];
 
 const CommentsContainer = ({ videoId }) => {
+  const [comments, setComments] = useState(commentsData);
+
   useEffect(() => {
-    fetchComments();
+    if (videoId != null) {
+      fetchComments();
+    }
   }, [videoId]);
 
   const fetchComments = async () => {
     const data = await fetch(VIDEO_COMMENTS_API + videoId);
     const json = await data.json();
-    console.log(json);
+    // console.log(json?.items);
+    setComments(json?.items);
   };
-  return (
-    <div className="m-5 p-2">
-      <h1 className="text-2xl font-bold">Comments:</h1>
-      <CommentsList comments={commentsData} />
-    </div>
-  );
+
+  if (comments == commentsData) {
+    return (
+      <div className="m-5 p-2">
+        <h1 className="text-2xl font-bold">Comments:</h1>
+        <CommentsList comments={comments} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="m-5 p-2">
+        <h1 className="text-2xl font-bold">Comments:</h1>
+        {comments.map((comment, index) => (
+          <div key={index}>
+            <Comment data={comment} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 };
 
 export default CommentsContainer;
