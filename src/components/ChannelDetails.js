@@ -34,7 +34,6 @@ const ChannelDetails = ({ channelId, channelTitle }) => {
       <div className=" flex flex-col pr-4 ">
         <p className="font-bold text-lg">{channelTitle}</p>
         <div className="flex text-sm">
-          {" "}
           <ViewsConverter views={subscriberCount} />
           <p className="pl-1"> subscribers</p>
         </div>

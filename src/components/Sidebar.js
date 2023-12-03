@@ -32,7 +32,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   if (!isMenuOpen) return null;
   return (
-    <div className="pl-8 py-8 pb-16 pr-16 min-w-fit fixed  max-h-screen hover:overflow-y-scroll overflow-hidden overscroll-contain  top-[64px] z-50  bg-white ">
+    <div className="pl-8 py-8 pb-16 pr-16 min-w-fit fixed  max-h-screen hover:overflow-y-scroll overflow-hidden overscroll-contain  top-[64px] z-10 bg-white ">
       <ul className="shadow-sm">
         <Link to="/" onClick={() => dispatch(closeMenu())}>
           <li className="flex py-2">

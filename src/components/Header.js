@@ -64,7 +64,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full flex p-7 mx-2 shadow-sm fixed z-10 bg-white">
+    <div className="w-full flex p-7 mx-2 shadow-sm fixed z-20 bg-white">
       <div className="flex w-3/12 items-center">
         <AiOutlineMenu
           className="text-2xl cursor-pointer"
@@ -100,7 +100,7 @@ const Header = () => {
             }}
           />
           <button
-            className="border border-gray-400  bg-gray-100 pt-[10px] pb-[14px] px-5 items-center rounded-r-full"
+            className="border border-gray-400  bg-gray-100 pt-[11px] pb-[14px] px-5 items-center rounded-r-full"
             onClick={() => {
               navigate("/results?search_query=" + searchQuery);
               setSearchQuery("");

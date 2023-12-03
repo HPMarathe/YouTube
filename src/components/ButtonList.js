@@ -22,7 +22,7 @@ const ButtonList = () => {
   ];
   return (
     <div className="flex w-screen justify-center overflow-x-scroll overflow-y:auto">
-      <div className="flex w-10/12 ">
+      <div className="flex ">
         {names.map((name, index) => {
           return (
             <Link key={name} to={"/results?search_query=" + name}>
