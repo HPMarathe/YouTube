@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { BsSearch } from "react-icons/bs";
@@ -43,7 +43,7 @@ const Header = () => {
     // console.log(json[1]);
     setSuggestions(json[1]);
 
-    //update the cache for searchresults
+    //update the cache
     // storing cache as object in key value pair
     dispatch(
       cacheResults({
@@ -70,13 +70,14 @@ const Header = () => {
           className="text-2xl cursor-pointer"
           onClick={() => toggleMenuHandler()}
         />
-        <Link to="/">
+
+        <a href="/">
           <img
             className="h-7 mx-2"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
             alt=""
           />
-        </Link>
+        </a>
       </div>
       <div className="w-8/12 px-10">
         <div className="">
@@ -106,6 +107,8 @@ const Header = () => {
               setSearchQuery("");
             }}
           >
+            {" "}
+            {/* 🔍 */}
             <BsSearch className="" />
           </button>
         </div>
@@ -130,6 +133,12 @@ const Header = () => {
         <IoMdNotificationsOutline />
         <RiLiveLine />
         <FaRegUserCircle />
+
+        {/* <img
+          className="h-8"
+          alt="user"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+        /> */}
       </div>
     </div>
   );

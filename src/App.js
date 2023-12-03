@@ -5,11 +5,8 @@ import { Provider } from "react-redux";
 import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
-// import WatchPage from "./components/WatchPage";
-// import SearchResults from "./components/SearchResults";
-import { Suspense, lazy } from "react";
-const WatchPage = lazy(() => import("./components/WatchPage"));
-const SearchResults = lazy(() => import("./components/SearchResults"));
+import WatchPage from "./components/WatchPage";
+import SearchResults from "./components/SearchResults";
 
 // error - useNavigate() may be used only in the context of a <Router> component.
 // for handling this error we need to put heaader into our approuter & hence we created Layout
@@ -34,19 +31,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/watch",
-        element: (
-          <Suspense>
-            <WatchPage />
-          </Suspense>
-        ),
+        element: <WatchPage />,
       },
       {
         path: "/results",
-        element: (
-          <Suspense>
-            <SearchResults />,
-          </Suspense>
-        ),
+        element: <SearchResults />,
       },
     ],
   },
