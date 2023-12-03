@@ -124,3 +124,21 @@ Two ways if data is live
 - because it is quickly deleting the top messages after a particular time.
 - if you stay at top message youtube will not pop/delete.
 - We can also change the no of messages cache according the browser.
+
+# How to handle infinitescroll?
+
+## Adding event Listener for scroll logic
+
+    window.addEventListener("scroll", handleInfiniteScroll, true);
+
+## main logic :- window.innerHeight + Math.round(document.documentElement.scrollTop) + 1 >=
+
+document.documentElement.scrollHeight
+
+- window.innerHeight returns the inner height of the window (the height of the browser window's viewport), in pixels.
+
+- document.documentElement.scrollTop returns the number of pixels that the document has been scrolled vertically.
+
+- document.documentElement.scrollHeight returns the height of the entire document, in pixels.
+
+## Using pageToken parameter in url to load new results whenever we touch end of the existing page.

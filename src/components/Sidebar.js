@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   SiYoutubeshorts,
-  SiReasonstudios,
   SiYoutubestudio,
+  SiYoutubemusic,
   SiYoutubegaming,
 } from "react-icons/si";
 import { GoHomeFill } from "react-icons/go";
@@ -12,7 +12,7 @@ import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoNewspaper, IoBook, IoMusicalNoteSharp } from "react-icons/io5";
 import { AiFillTrophy } from "react-icons/ai";
 import { FaHistory, FaAngleDown, FaYoutube } from "react-icons/fa";
-
+import { TbBrandYoutubeKids } from "react-icons/tb";
 import { HiShoppingBag } from "react-icons/hi2";
 import {
   MdPodcasts,
@@ -25,13 +25,14 @@ import { BsFire } from "react-icons/bs";
 import { PiPresentationChartFill } from "react-icons/pi";
 import { RiLiveFill } from "react-icons/ri";
 import { closeMenu } from "../utils/appSlice";
+import { IoSettingsSharp } from "react-icons/io5";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store?.app?.isMenuOpen);
   const dispatch = useDispatch();
   if (!isMenuOpen) return null;
   return (
-    <div className="pl-8 py-8 pr-16 min-w-fit fixed  max-h-screen hover:overflow-y-scroll overflow-hidden overscroll-contain  top-[64px] z-50  bg-white ">
+    <div className="pl-8 py-8 pb-16 pr-16 min-w-fit fixed  max-h-screen hover:overflow-y-scroll overflow-hidden overscroll-contain  top-[64px] z-50  bg-white ">
       <ul className="shadow-sm">
         <Link to="/" onClick={() => dispatch(closeMenu())}>
           <li className="flex py-2">
@@ -227,7 +228,7 @@ const Sidebar = () => {
           onClick={() => dispatch(closeMenu())}
         >
           <li className="flex py-2">
-            <SiReasonstudios className="text-2xl " />
+            <SiYoutubestudio className="text-2xl " />
             <p className="pl-4 ">YouTube Studio</p>
           </li>
         </Link>
@@ -236,7 +237,7 @@ const Sidebar = () => {
           onClick={() => dispatch(closeMenu())}
         >
           <li className="flex py-2">
-            <GoHomeFill className="text-2xl " />
+            <SiYoutubemusic className="text-2xl " />
             <p className="pl-4 ">YouTube Music</p>
           </li>
         </Link>
@@ -245,7 +246,7 @@ const Sidebar = () => {
           onClick={() => dispatch(closeMenu())}
         >
           <li className="flex py-2">
-            <SiYoutubestudio className="text-2xl " />
+            <TbBrandYoutubeKids className="text-2xl " />
             <p className="pl-4 ">YouTube Kids</p>
           </li>
         </Link>
@@ -254,7 +255,7 @@ const Sidebar = () => {
           onClick={() => dispatch(closeMenu())}
         >
           <li className="flex py-2">
-            <GoHomeFill className="text-2xl " />
+            <IoSettingsSharp className="text-2xl " />
             <p className="pl-4 ">Settings</p>
           </li>
         </Link>
