@@ -21,16 +21,17 @@ const WatchPage = () => {
 
   const videoId = searchParams.get("v");
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(closeMenu());
-  }, []);
+  }, [videoId]);
 
   return (
-    <div className="flex flex-col w-full py-3">
+    <div className="flex flex-col w-full">
       <div className="px-5 flex w-full ">
         <div className="w-8/12">
           <iframe
             className="rounded-lg aspect-video w-full"
-            src={"https://www.youtube.com/embed/" + videoId}
+            src={"https://www.youtube.com/embed/" + videoId + "?autoplay=1"}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
