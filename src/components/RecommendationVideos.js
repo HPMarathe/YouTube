@@ -26,13 +26,19 @@ const RecommendationVideos = () => {
   if (recommendationVideos == null) return <RecVideoShimmer />;
 
   // console.log(recommendationVideos);
+
   return (
     <div>
-      {recommendationVideos?.map((recommendationVideo, index) => (
-        <div key={index}>
-          <RecommendationVideoCard recommendationVideo={recommendationVideo} />
-        </div>
-      ))}
+      {recommendationVideos?.map((recommendationVideo, index) =>
+        // Dont show channel card as we have not develeoped channelpage.
+        recommendationVideo?.contentDetails?.subscription ? null : (
+          <div key={index}>
+            <RecommendationVideoCard
+              recommendationVideo={recommendationVideo}
+            />
+          </div>
+        )
+      )}
     </div>
   );
 };

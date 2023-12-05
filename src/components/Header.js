@@ -64,7 +64,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full flex p-7 mx-2 shadow-sm fixed z-20 bg-white">
+    <div className="w-full flex p-4 mx-2 shadow-sm fixed z-20 bg-white">
       <div className="flex w-3/12 items-center">
         <AiOutlineMenu
           className="text-2xl cursor-pointer"

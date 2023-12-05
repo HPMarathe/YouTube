@@ -24,7 +24,7 @@ const SearchVideoCard = ({ video }) => {
     channelDetails?.items[0].snippet?.thumbnails?.high?.url || {};
 
   return (
-    <div className=" flex  py-4 justify-center pl-28 ">
+    <div className="flex py-4 justify-center pl-20">
       <div className="w-11/12 h-56 flex overflow-y-hidden ">
         <img
           className="h-full rounded-lg "
@@ -34,7 +34,6 @@ const SearchVideoCard = ({ video }) => {
         <div className="pl-4">
           <h1 className="font-semibold text-xl">{video?.snippet?.title}</h1>
           <div className="">
-            {" "}
             <TimeConverter utcTimestamp={video?.snippet?.publishedAt} />
           </div>
           <div className="flex my-1">

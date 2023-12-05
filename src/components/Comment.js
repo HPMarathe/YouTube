@@ -2,7 +2,7 @@ import React from "react";
 
 const Comment = ({ data }) => {
   // console.log(data);
-  const { authorDisplayName, authorProfileImageUrl, textDisplay } =
+  const { authorDisplayName, authorProfileImageUrl, textOriginal } =
     data?.snippet?.topLevelComment?.snippet || {};
 
   return (
@@ -14,7 +14,7 @@ const Comment = ({ data }) => {
       />
       <div className="px-3">
         <p className="font-bold">{authorDisplayName}</p>
-        <p>{textDisplay}</p>
+        <p>{textOriginal}</p>
       </div>
     </div>
   );
