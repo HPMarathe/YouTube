@@ -19,6 +19,13 @@ const WatchPageVideoDetails = ({ videoId }) => {
     return () => dispatch(clearChannelId());
   }, [videoId]);
 
+  useEffect(() => {
+    if (videoDetails) {
+      const { channelId } = videoDetails.snippet || {};
+      dispatch(setChannnelId(channelId));
+    }
+  }, [videoDetails, dispatch]);
+
   const fetchVideoDetails = async () => {
     const data = await fetch(VIDEO_DETAILS_API + videoId);
     const json = await data.json();
@@ -30,9 +37,9 @@ const WatchPageVideoDetails = ({ videoId }) => {
     videoDetails?.snippet || {};
 
   // console.log(channelId);
-  dispatch(setChannnelId(channelId));
+  // dispatch(setChannnelId(channelId));
 
-  const { commentCount, likeCount, viewCount } = videoDetails?.statistics || {};
+  const { likeCount, viewCount } = videoDetails?.statistics || {};
 
   if (videoDetails == null) return;
 
