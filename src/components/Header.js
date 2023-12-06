@@ -101,6 +101,8 @@ const Header = () => {
           />
           <button
             className="border border-gray-400  bg-gray-100 pt-[11px] pb-[14px] px-5 items-center rounded-r-full"
+            // Disable button if searchQuery is empty or only contains whitespace
+            disabled={!searchQuery.trim()}
             onClick={() => {
               navigate("/results?search_query=" + searchQuery);
               setSearchQuery("");
@@ -126,7 +128,7 @@ const Header = () => {
           </div>
         )}
       </div>
-      <div className="w-1/12 flex text-3xl justify-between">
+      <div className="w-1/12 flex text-3xl justify-between cursor-pointer">
         <IoMdNotificationsOutline />
         <RiLiveLine />
         <FaRegUserCircle />

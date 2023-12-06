@@ -56,7 +56,11 @@ const LiveChat = () => {
               setLiveMessage(e.target.value);
             }}
           />
-          <button className=" px-2 py-1 mx-2 rounded-md">
+          <button
+            className=" px-2 py-1 mx-2 rounded-md"
+            // Disable button if liveMessage is empty or only contains whitespace
+            disabled={!liveMessage.trim()}
+          >
             <IoSendSharp />
           </button>
         </div>

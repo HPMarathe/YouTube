@@ -8,7 +8,7 @@ export const YOUTUBE_SEARCH_RESULTS_API =
   "&q=";
 
 export const YOUTUBE_SEARCH_SUGGESTIONS_API =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const CHANNEL_DATA_API =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
