@@ -118,7 +118,10 @@ const Header = () => {
                 <li
                   key={suggestion}
                   // mousedown will direct when you click on suggestions
-                  onMouseDown={(e) => handleSuggestion(e)}
+                  onMouseDown={(e) => {
+                    handleSuggestion(e);
+                    setSearchQuery("");
+                  }}
                   className="py-2 px-3 shadow-sm hover:bg-gray-200 cursor-pointer"
                 >
                   {suggestion}
